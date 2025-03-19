@@ -1,3 +1,12 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap'); */
+
+@font-face {
+  font-family: 'Inter';
+  src: url(../assets/fonts/Inter-VariableFont_slnt\wght.ttf) format('truetype');
+  font-weight: 100 900;
+  font-display: swap;
+}
+
 :root {
   /* Primary Colors */
   --color-dark-blue: hsl(229, 63%, 41%);
@@ -23,6 +32,7 @@
   --fs-20: 1.25rem;
   --fs-18: 1.125rem;
   --fs-16: 1rem;
+  --fs-15: 0.9375rem;
   --fs-14: 0.875rem;
   --fs-12: 0.75rem;
   --fs-10: 0.625rem;
@@ -156,4 +166,188 @@ body {
   position: absolute !important;
   width: 1px !important;
   white-space: nowrap !important;
+}
+
+main {
+  padding-block-start: var(--spacing-20);
+  margin-inline: var(--spacing-8);
+}
+
+/********* Grid Wrapper Styles **********/
+
+.grid__wrapper {
+  display: grid;
+  width: fit-content;
+  margin-inline: auto;
+
+  /* Default: 1 column, max width of 390px */
+  grid-template-columns: minmax(0, 390px);
+  justify-content: center;
+
+  background: url(../resources/Background_decor.svg), var(--color-neutral-200);
+  background-repeat: no-repeat;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/********* Header Styles **********/
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-12);
+  padding: var(--spacing-32);
+  min-height: 288px;
+}
+
+.ribbon__text {
+  font-size: var(--fs-16);
+  letter-spacing: -1%;
+  color: var(--color-dark-blue);
+  border-radius: 0 0 0 8px;
+}
+
+.section__title {
+  font-size: var(--fs-40);
+  font-weight: var(--fw-500);
+  letter-spacing: -1%;
+}
+
+.section__description {
+  letter-spacing: -1%;
+}
+
+/********* Team Member Styles **********/
+.team__member {
+  position: relative;
+  color: var(--color-neutral-100);
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background-image: url(../resources/Gradient.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: 1;
+}
+
+.team__member__image img {
+  object-fit: cover;
+}
+
+.team__member__info {
+  position: absolute;
+  bottom: var(--spacing-20);
+  left: var(--spacing-24);
+  z-index: 2;
+}
+
+.team__member__name {
+  font-size: var(--fs-20);
+  font-weight: var(--fw-700);
+  margin-bottom: var(--spacing-4);
+}
+
+.team__member__role {
+  font-size: var(--fs-15);
+  font-weight: var(--fw-400);
+}
+
+.all__members__link {
+  position: relative;
+  height: 395px;
+}
+
+.all__members__link a {
+  display: flex;
+  align-items: center;
+
+  position: absolute;
+  bottom: var(--spacing-20);
+  left: var(--spacing-24);
+  color: var(--color-neutral-400);
+  text-decoration: none;
+}
+
+/********* Background Colors **********/
+.purple__background {
+  position: relative;
+  background-color: var(--color-light-purple);
+}
+
+.pink__background {
+  background-color: var(--color-light-pink);
+}
+
+.blue__background {
+  background-color: var(--color-light-blue);
+}
+
+.yellow__background {
+  background-color: var(--color-light-yellow);
+}
+
+.green__background {
+  background-color: var(--color-light-green);
+}
+
+/********* Media Queries **********/
+/* At 600px: Switch to 2 columns */
+@media (min-width: 600px) {
+  .grid__wrapper {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 390px));
+    width: fit-content;
+  }
+
+  main {
+    padding-block-start: var(--spacing-72);
+  }
+
+  .header {
+    grid-column: 1/-1;
+  }
+}
+
+/* At 1024px: Switch to 3 fixed columns */
+@media (min-width: 1024px) {
+  .grid__wrapper {
+    grid-template-columns: repeat(3, 284px);
+    grid-template-rows: repeat(3, 288px);
+
+    width: fit-content;
+  }
+
+  .header {
+    grid-column: span 3;
+  }
+
+  .all__members__link {
+    grid-column: 1/2;
+    grid-row: 3/4;
+  }
+
+  .all__members__link {
+    height: 288px;
+  }
+}
+
+/* At 1350px: Switch to 4 fixed columns */
+@media (min-width: 1350px) {
+  .grid__wrapper {
+    grid-template-columns: repeat(4, 284px);
+    grid-template-rows: repeat(2, 288px);
+  }
+
+  .header {
+    grid-column: span 2;
+  }
+
+  .all__members__link {
+    grid-column: 1/2;
+    grid-row: 2/3;
+  }
 }
