@@ -62,6 +62,7 @@
   --spacing-60: 3.75rem;
   --spacing-72: 4.5rem;
   --spacing-80: 5rem;
+  --spacing-90: 5.625rem;
 }
 
 /********* Reset **********/
@@ -308,7 +309,7 @@ main {
   }
 
   main {
-    padding-block-start: var(--spacing-72);
+    padding-block-start: var(--spacing-90);
   }
 
   .header {
